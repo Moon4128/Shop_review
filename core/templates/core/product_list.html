@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Список продуктів{% endblock %}
+
+{% block content %}
+
+<h1>Список продуктів</h1>
+
+{% for product in products %}
+    <div>
+        <h2>
+            <a href="{% url 'product_detail' product.pk %}">
+                {{ product.name }}
+            </a>
+        </h2>
+
+        <p>{{ product.description }}</p>
+        <p><strong>Ціна:</strong> {{ product.price }}</p>
+    </div>
+    <hr>
+{% empty %}
+    <p>Немає продуктів</p>
+{% endfor %}
+
+{% endblock %}
